@@ -3,9 +3,12 @@ const app = express()
 const port = process.env.PORT || 3000
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri = "mongodb+srv://cboz:luther66@cluster0.d0gwoea.mongodb.net";
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
